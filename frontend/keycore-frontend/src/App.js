@@ -9,14 +9,12 @@ import AddIcon from "@mui/icons-material/Add";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import MoreIcon from "@mui/icons-material/MoreVert";
-import CardContent from "@mui/material/CardContent";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 
-const services = [
+import RecordCard from "./components/RecordCard";
+
+const records = [
   {
     name: "Facebook",
     description:
@@ -49,60 +47,44 @@ const services = [
   },
 ];
 
-const ServiceCard = ({ name, description }) => {
-  return (
-    <Card variant="outlined" sx={{ maxWidth: 1920 }}>
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {name}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {description}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
-  );
-};
-
 const Navbar = () => {
   return (
-    <AppBar position="fixed" color="primary" sx={{ top: "auto", bottom: 0 }}>
-      <Toolbar>
-        <Typography
-          variant="h6"
-          noWrap
-          component="div"
-          sx={{ fontWeight: "bold" }}
-        >
-          KEY
-        </Typography>
+    <>
+      <AppBar position="fixed" color="primary" sx={{ top: "auto", bottom: 0 }}>
+        <Toolbar>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ fontWeight: "bold" }}
+          >
+            KEY
+          </Typography>
 
-        <Typography
-          variant="h6"
-          noWrap
-          component="div"
-          sx={{ fontWeight: "light" }}
-        >
-          CORE
-        </Typography>
-        <Box sx={{ flexGrow: 1 }} />
-        <IconButton color="inherit">
-          <AddIcon />
-        </IconButton>
-        <IconButton color="inherit">
-          <SearchIcon />
-        </IconButton>
-        <IconButton color="inherit">
-          <MoreIcon />
-        </IconButton>
-      </Toolbar>
-    </AppBar>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ fontWeight: "light" }}
+          >
+            CORE
+          </Typography>
+          <Box sx={{ flexGrow: 1 }} />
+          <IconButton color="inherit">
+            <AddIcon />
+          </IconButton>
+          <IconButton color="inherit">
+            <SearchIcon />
+          </IconButton>
+          <IconButton color="inherit">
+            <MoreIcon />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+    </>
   );
 };
+
 const App = () => {
   return (
     <div className="App">
@@ -111,14 +93,15 @@ const App = () => {
       <Container>
         <Box sx={{ my: 4 }}>
           <Grid container spacing={2}>
-            {services.map(({ name, description }, index) => (
+            {records.map(({ name, description }, index) => (
               <Grid item xs={12} md={4} xl={3} key={index.toString()}>
-                <ServiceCard name={name} description={description}/>
+                <RecordCard name={name} description={description} />
               </Grid>
             ))}
           </Grid>
         </Box>
       </Container>
+      <Toolbar />
     </div>
   );
 };
